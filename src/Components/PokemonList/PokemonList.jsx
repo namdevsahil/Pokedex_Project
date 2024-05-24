@@ -21,7 +21,8 @@ function PokemonList(){
         const pokemonResultPromise = pokemonResults.map((pokemon) => axios.get(pokemon.url));
         // passing that promises array to axios.all
         const pokemonData = await axios.all(pokemonResultPromise);
-        console.log(pokemonData);
+        console.log(pokemonData);      
+        // now iterate on the data of each pokemon , and extract if, name, image
          const res = pokemonData.map((pokeData) => {
             const pokemon = pokeData.data;
             return {
@@ -50,8 +51,15 @@ function PokemonList(){
 
     return (
         <div className="pokemon-list-wrapper">
-            <div>Pokemon List</div>
-            {(isLoading) ? 'Loading....' : pokemonList.map((p)=> <Pokemon name={p.name} image={p.image} key={p.id}/>)}
+            <div className="pokemon-wrapper">
+               {(isLoading) ? 'Loading....' :
+                pokemonList.map((p)=> <Pokemon name={p.name} image={p.image} />)}
+            </div>
+
+            <div className="controls">
+                <button>Prev</button>
+                <button>Next</button>
+            </div>
 
         </div>
     )
