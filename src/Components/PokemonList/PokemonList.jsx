@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import './PokemonList.css';
 import Pokemon from "../Pokemon/Pokemon";
+import react from 'react';
 
 function PokemonList(){
 
@@ -60,7 +61,7 @@ function PokemonList(){
         <div className="pokemon-list-wrapper">
             <div className="pokemon-wrapper">
                {(isLoading) ? 'Loading....' :
-                pokemonList.map((p)=> <Pokemon name={p.name} image={p.image} />)}
+                pokemonList.map((p)=> <Pokemon name={p.name} image={p.image} id={p.id} />)}
             </div>
 
             <div className="controls">
